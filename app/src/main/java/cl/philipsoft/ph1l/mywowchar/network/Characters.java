@@ -12,7 +12,7 @@ import retrofit2.http.Query;
 
 public interface Characters {
 
-    @GET("wow/character/{realm}/{character}")
+    @GET("character/{realm}/{character}")
     Call<Character> get(
             @Path("realm") String realm,
             @Path("character") String character,

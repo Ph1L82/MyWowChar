@@ -2,6 +2,7 @@ package cl.philipsoft.ph1l.mywowchar.background;
 
 import android.os.AsyncTask;
 import android.util.Log;
+import android.widget.Toast;
 
 import java.io.IOException;
 
@@ -34,19 +35,22 @@ public class GetCharacter extends AsyncTask<String, Integer, Character> {
                 Character character = response.body();
                 return character;
             } else {
-                code = 777;
 
+                Log.d("GETCHARACTER", "original CODE: " + String.valueOf(code));
+                code = 777;
+                Log.d("GETCHARACTER", "CODE: " + String.valueOf(code));
             }
         } catch (IOException e) {
             e.printStackTrace();
             code = e.hashCode();
+            Log.d("GETCHARACTER", "CODE: " + String.valueOf(code));
         }
         return null;
     }
 
     @Override
     protected void onPostExecute(Character character) {
-        Log.d("RESULT", String.valueOf(character));
+        Log.d("RESULT", String.valueOf(character.getName()));
         callback.characterLoaded(character);
     }
 }

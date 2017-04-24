@@ -54,7 +54,5 @@ public class CharacterActivity extends AppCompatActivity {
         realmTv.setText("Realm: " + myChar.getRealm());
         killsTv.setText("Honorable Kills: " + myChar.getTotalHonorableKills());
         achievementsTv.setText("Achievements: " + myChar.getAchievementPoints());
-
-
     }
 }

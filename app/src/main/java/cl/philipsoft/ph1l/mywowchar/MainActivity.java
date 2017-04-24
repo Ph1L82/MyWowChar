@@ -3,7 +3,6 @@ package cl.philipsoft.ph1l.mywowchar;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -20,9 +19,9 @@ import cl.philipsoft.ph1l.mywowchar.views.CharacterCallback;
 
 public class MainActivity extends AppCompatActivity implements CharacterCallback {
 
-    GetCharacter getCharacter = new GetCharacter();
+    GetCharacter getCharacter;
     Spinner charactersSp;
-    Button loadBtn = (Button) findViewById(R.id.loadBtn);
+    Button loadBtn;
     String characterName = CharacterInterceptor.DEFAULT_CHARACTER;
 
 
@@ -40,7 +39,7 @@ public class MainActivity extends AppCompatActivity implements CharacterCallback
                 | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION);
 
         charactersSp = (Spinner) findViewById(R.id.charactersSp);
-        getCharacter.callback = this;
+
         charactersSp.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -53,12 +52,16 @@ public class MainActivity extends AppCompatActivity implements CharacterCallback
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
                 Toast.makeText(MainActivity.this, Resources.getSystem().getString(R.string.choose_character), Toast.LENGTH_SHORT).show();
+                loadBtn.setEnabled(false);
             }
         });
+        loadBtn = (Button) findViewById(R.id.loadBtn);
         loadBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Log.d("GETCHARACTER_EXECUTE", CharacterInterceptor.DEFAULT_REALM + " " + characterName + " " + CharacterInterceptor.DEFAULT_LOCALE + " " + CharacterInterceptor.API_KEY);
+                getCharacter = new GetCharacter();
+                getCharacter.callback = MainActivity.this;
                 getCharacter.execute(CharacterInterceptor.DEFAULT_REALM, characterName, CharacterInterceptor.DEFAULT_LOCALE, CharacterInterceptor.API_KEY);
             }
         });

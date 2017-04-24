@@ -25,17 +25,17 @@
 
     <Spinner
         android:id="@+id/charactersSp"
-        android:layout_width="368dp"
-        android:layout_height="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_below="@id/charactersTv"
         android:entries="@array/characters_array"
-        android:paddingBottom="16dp"
-        android:paddingLeft="8dp"
-        android:paddingRight="8dp"
-        android:paddingTop="16dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
         android:prompt="@string/choose_character"
         tools:layout_editor_absoluteX="8dp"
-        tools:layout_editor_absoluteY="0dp" />
+        tools:layout_editor_absoluteY="0dp"
+        android:background="@color/allianceBackground"
+        android:popupBackground="@color/allianceBackground" />
 
     <Button
         android:id="@+id/loadBtn"
@@ -46,6 +46,7 @@
         android:enabled="false"
         android:text="@string/load"
         android:textColor="@color/allianceFront"
-        android:visibility="gone" />
+        android:visibility="gone"
+        android:layout_marginBottom="50dp" />
 
 </RelativeLayout>

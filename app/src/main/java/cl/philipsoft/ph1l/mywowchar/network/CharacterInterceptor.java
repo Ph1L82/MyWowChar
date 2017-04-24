@@ -20,16 +20,11 @@ public class CharacterInterceptor {
     public static final String DEFAULT_CHARACTER = "reivajal";
 
     public Characters getChar(){
-//        Retrofit interceptor = new Retrofit.Builder()
-//                .baseUrl(BASE_URL)
-//                .addConverterFactory(GsonConverterFactory.create())
-//                .build();
-//        Characters character = interceptor.create(Characters.class);
-//        return character;
+
         OkHttpClient.Builder httpClient = new OkHttpClient.Builder()
-                .connectTimeout(60, TimeUnit.SECONDS)
-                .readTimeout(60, TimeUnit.SECONDS)
-                .writeTimeout(60, TimeUnit.SECONDS);
+                .connectTimeout(30, TimeUnit.SECONDS)
+                .readTimeout(30, TimeUnit.SECONDS)
+                .writeTimeout(30, TimeUnit.SECONDS);
 
         OkHttpClient client = httpClient.build();
 
